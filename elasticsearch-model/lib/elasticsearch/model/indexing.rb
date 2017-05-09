@@ -138,6 +138,7 @@ module Elasticsearch
 
           if options and options[:document_type]
             @mapping.type = options[:document_type]
+            options.delete :document_type
           end
 
           @mapping.options.update(options) unless options.empty?
