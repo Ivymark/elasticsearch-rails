@@ -133,8 +133,7 @@ module Elasticsearch
         # when it doesn't already define them. Use the `__elasticsearch__` proxy otherwise.
         #
         def mapping(options={}, &block)
-          puts "@mapping - #{@mapping}"
-          puts "@type = #{@type}"
+          puts "@mapping - #{@mapping ? @mapping.type : 'empty'}"
           @mapping ||= Mappings.new(document_type, options)
 
           @mapping.options.update(options) unless options.empty?
