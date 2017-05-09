@@ -133,19 +133,18 @@ module Elasticsearch
         # when it doesn't already define them. Use the `__elasticsearch__` proxy otherwise.
         #
         def mapping(options={}, &block)
+          puts "@mapping - #{@mapping}"
+          puts "@type = #{@type} - #{type}"
           @mapping ||= Mappings.new(document_type, options)
 
           @mapping.options.update(options) unless options.empty?
-          if options and options[:document_type]
-            self.type = options[:document_type]
-          end
+
           if block_given?
             @mapping.instance_eval(&block)
             return self
           else
             @mapping
           end
-
         end; alias_method :mappings, :mapping
 
         # Define settings for the index
