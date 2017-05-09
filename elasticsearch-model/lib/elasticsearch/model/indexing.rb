@@ -143,6 +143,10 @@ module Elasticsearch
           else
             @mapping
           end
+
+          if options and options[:document_type]
+            @type = options[:document_type]
+          end
         end; alias_method :mappings, :mapping
 
         # Define settings for the index
