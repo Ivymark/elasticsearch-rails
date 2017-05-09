@@ -136,7 +136,9 @@ module Elasticsearch
           @mapping ||= Mappings.new(document_type, options)
 
           @mapping.options.update(options) unless options.empty?
-
+          if options and options[:document_type]
+            @type = options[:document_type]
+          end
           if block_given?
             @mapping.instance_eval(&block)
             return self
@@ -144,9 +146,6 @@ module Elasticsearch
             @mapping
           end
 
-          if options and options[:document_type]
-            @type = options[:document_type]
-          end
         end; alias_method :mappings, :mapping
 
         # Define settings for the index
