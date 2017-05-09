@@ -137,7 +137,7 @@ module Elasticsearch
 
           @mapping.options.update(options) unless options.empty?
           if options and options[:document_type]
-            type = options[:document_type]
+            self.type = options[:document_type]
           end
           if block_given?
             @mapping.instance_eval(&block)
