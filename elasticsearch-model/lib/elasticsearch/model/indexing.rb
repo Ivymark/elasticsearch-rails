@@ -134,7 +134,7 @@ module Elasticsearch
         #
         def mapping(options={}, &block)
           puts "@mapping - #{@mapping}"
-          puts "@type = #{@type} - #{type}"
+          puts "@type = #{@type}"
           @mapping ||= Mappings.new(document_type, options)
 
           @mapping.options.update(options) unless options.empty?
