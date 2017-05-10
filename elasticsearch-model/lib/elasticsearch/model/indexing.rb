@@ -343,6 +343,12 @@ module Elasticsearch
         def index_document(options={})
           document = self.as_indexed_json
 
+          puts "document"
+          puts document
+
+          puts "index_name - #{index_name}"
+          puts "type - #{document_type}"
+          puts "options - #{options}"
           client.index(
             { index: index_name,
               type:  document_type,
